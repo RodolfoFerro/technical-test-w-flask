@@ -1,7 +1,6 @@
 # Solution to Python Flask technical challenge 🚀
 
 <!-- Shields -->
-![Top language](https://img.shields.io/github/languages/top/RodolfoFerro/technical-test-w-flask?style=for-the-badge)
 ![Code size](https://img.shields.io/github/languages/code-size/RodolfoFerro/technical-test-w-flask?style=for-the-badge)
 [![Last commit](https://img.shields.io/github/last-commit/RodolfoFerro/technical-test-w-flask?style=for-the-badge)](https://github.com/RodolfoFerro/technical-test-w-flask/commits/master)
 [![License](https://img.shields.io/github/license/RodolfoFerro/technical-test-w-flask?style=for-the-badge)](https://github.com/RodolfoFerro/technical-test-w-flask/blob/master/LICENSE)
