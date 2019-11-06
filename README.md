@@ -15,7 +15,7 @@ This repository contains the solution for a particular challenge using Python + 
 The whole challenge specs could be listed as follows:
 
 1. [X] Create a new Python project using Flask 1.1.x.
-2. [ ] Create a `User` model with properties:
+2. [X] Create a `User` model with properties:
    - `Integer ID PK` (_self-increasing_)
    - `String Name (30)`
    - `String First_Last_Name (30)`
@@ -26,13 +26,15 @@ The whole challenge specs could be listed as follows:
    - `String Password` (_Must be encrypted_)
 3. [ ] Create needed methods for CRUD operations in the user model, using REST.
 4. [ ] Create a login view with route `'/login'` asking for `Email` and `Password` (this field must have a mask). In case of correct login, the app must generate a session for the user.
+   - [X] Login view
+   - [ ] Generate a session
 5. [ ] Create a view with route `'/users'` which should show a table with all registered users. It must contain an action button to delete the user, and a column with an icon for the gender.
    - [Male icon](https://cdn3.iconfinder.com/data/icons/fatcow/32x32_0560/male.png)
    - [Female icon](https://cdn3.iconfinder.com/data/icons/fatcow/32/female.png)
    - [Other icon](https://cdn3.iconfinder.com/data/icons/i-am-who-i-am/100/3-256.png)
 6. [ ] Create a view with route `'/users?filter={name}'` (`name` could be only text), which must show a table with registered users whose full name includes the sent characters by the `name` parameter.
 7. [ ] Create a view with route `'/user/{id}'` (`id` could be only a number), which should show the datailed user corresponding to the `id` variable, _in case it exists_. Otherwise, return a `404` screen for that route.
-8. [ ] Create a `Role` model with properties:
+8. [X] Create a `Role` model with properties:
    - `Integer ID PK` (_self-increasing_)
    - `String Name (30)`
    - `String Description (20)` (_optional_)
@@ -112,10 +114,17 @@ To install the requirements using `pip`, once the virtual environment is active:
 
 Finally, if you want to run the app locally, simply run:
 ```bash
-$ python app.py
+(docker-flask)$ python app.py
 ```
 
 Now you should be able to test the API at <http://0.0.0.0:5000/>.
+
+### Initializing the database
+
+To create the database, run the `db.py` script as follows:
+```bash
+(docker-flask)$ python db.py
+```
 
 ## Install/Run with Docker
 
@@ -135,7 +144,7 @@ $ docker build -t technical-test-w-flask .
 
 To run the Docker image, run the following:
 ```bash
-$ docker run -it -p 5000:5000 -v $(pwd):/app technical-test-w-flask
+$ docker run -it -d -p 5000:5000 -v $(pwd):/app technical-test-w-flask
 ```
 
 Now you should be able to test the API at <http://localhost:5000/>.
@@ -145,6 +154,10 @@ To stop the Docker container:
 $ docker ps
 $ docker stop <container-id>
 ```
+
+### Initializing the database
+
+The database should be initialized as part of the Dockerfile actions to run.
 
 
 ## Contact
