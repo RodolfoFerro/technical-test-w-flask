@@ -16,26 +16,26 @@ The whole challenge specs could be listed as follows:
 
 1. [X] Create a new Python project using Flask 1.1.x.
 2. [ ] Create a `User` model with properties:
-  - `Integer ID PK` (_self-increasing_)
-  - `String Name (30)`
-  - `String First_Last_Name (30)`
-  - `String Second_Last_Name (30)` (_optional_)
-  - `String Email (80)`
-  - `DateTime BirthDate`
-  - `String Gender` (_Accepts_ `M`, `F`, `O`)
-  - `String Password` (_Must be encrypted_)
+   - `Integer ID PK` (_self-increasing_)
+   - `String Name (30)`
+   - `String First_Last_Name (30)`
+   - `String Second_Last_Name (30)` (_optional_)
+   - `String Email (80)`
+   - `DateTime BirthDate`
+   - `String Gender` (_Accepts_ `M`, `F`, `O`)
+   - `String Password` (_Must be encrypted_)
 3. [ ] Create needed methods for CRUD operations in the user model, using REST.
 4. [ ] Create a login view with route `'/login'` asking for `Email` and `Password` (this field must have a mask). In case of correct login, the app must generate a session for the user.
 5. [ ] Create a view with route `'/users'` which should show a table with all registered users. It must contain an action button to delete the user, and a column with an icon for the gender.
-  - [Male icon](https://cdn3.iconfinder.com/data/icons/fatcow/32x32_0560/male.png)
-  - [Female icon](https://cdn3.iconfinder.com/data/icons/fatcow/32/female.png)
-  - [Other icon](https://cdn3.iconfinder.com/data/icons/i-am-who-i-am/100/3-256.png)
+   - [Male icon](https://cdn3.iconfinder.com/data/icons/fatcow/32x32_0560/male.png)
+   - [Female icon](https://cdn3.iconfinder.com/data/icons/fatcow/32/female.png)
+   - [Other icon](https://cdn3.iconfinder.com/data/icons/i-am-who-i-am/100/3-256.png)
 6. [ ] Create a view with route `'/users?filter={name}'` (`name` could be only text), which must show a table with registered users whose full name includes the sent characters by the `name` parameter.
 7. [ ] Create a view with route `'/user/{id}'` (`id` could be only a number), which should show the datailed user corresponding to the `id` variable, _in case it exists_. Otherwise, return a `404` screen for that route.
 8. [ ] Create a `Role` model with properties:
-  - `Integer ID PK` (_self-increasing_)
-  - `String Name (30)`
-  - `String Description (20)` (_optional_)
+   - `Integer ID PK` (_self-increasing_)
+   - `String Name (30)`
+   - `String Description (20)` (_optional_)
 9. [ ] Create two roles, `Administrator` and `Client`, directly in the database.
 10. [ ] Add relation of `User` with `Role` 1-1.
 11. [ ] Create view of _creation/edition_ of a user. The user could only access this view if the user is logged in and the user session must be validated.
