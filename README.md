@@ -118,12 +118,6 @@ Finally, if you want to run the app locally, simply run:
 
 Now you should be able to test the API at <http://0.0.0.0:5000/>.
 
-### Initializing the database
-
-To create the database, run the `db.py` script as follows:
-```bash
-(docker-flask)$ python db.py
-```
 
 ## Install/Run with Docker
 
@@ -153,10 +147,6 @@ To stop the Docker container:
 $ docker ps
 $ docker stop <container-id>
 ```
-
-### Initializing the database
-
-The database should be initialized as part of the Dockerfile actions to run.
 
 
 ## Contact
