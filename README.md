@@ -124,7 +124,7 @@ If you want to install the dependencies and work using Docker, you can simply fo
 Clone the project repository:
 ```bash
 git clone https://github.com/RodolfoFerro/technical-test-w-flask.git
-cd docker-flask-api
+cd technical-test-w-flask
 ```
 
 To build the Docker image, simply run:
@@ -145,25 +145,6 @@ To stop the Docker container:
 $ docker ps
 $ docker stop <container-id>
 ```
-
-## Contributing
-
-To contribute to <project_name>, follow these steps:
-
-1. Fork this repository.
-2. Create a branch: `git checkout -b <feature_branch_name>`.
-3. Make your changes and commit them: `git commit -m '<commit_message>'`
-4. Push to the original branch: `git push origin <project_name>/<location>`
-5. Create a Pull Request.
-
-Additionally you can see the GitHub documentation on [creating a Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
-
-
-<!-- ## Contributors
-
-Thanks to the following people who have contributed to this project:
-
-* @RodolfoFerro 📖💻 -->
 
 
 ## Contact
