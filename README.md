@@ -13,7 +13,7 @@ This repository contains the solution for a particular challenge using Python + 
 
 The whole challenge specs could be listed as follows:
 
-1. [X] Create a new Python project using Flask 1.1.x.
+1. [X] Create a new Python project using Flask 1.1.x.<sup>[1](https://github.com/RodolfoFerro/technical-test-w-flask#extra-developments)</sup>
 2. [X] Create a `User` model with properties:
    - `Integer ID PK` (_self-increasing_)
    - `String Name (30)`
@@ -23,11 +23,11 @@ The whole challenge specs could be listed as follows:
    - `DateTime BirthDate`
    - `String Gender` (_Accepts_ `M`, `F`, `O`)
    - `String Password` (_Must be encrypted_)
-3. [ ] Create needed methods for CRUD operations in the user model, using REST.
+3. [X] Create needed methods for CRUD operations in the user model, using REST.<sup>[2](https://github.com/RodolfoFerro/technical-test-w-flask#extra-developments)</sup>
    - [X] CREATE
    - [X] READ
-   - [ ] UPDATE
-   - [ ] DELETE
+   - [X] UPDATE
+   - [X] DELETE
 4. [X] Create a login view with route `'/login'` asking for `Email` and `Password` (this field must have a mask). In case of correct login, the app must generate a session for the user.
    - [X] Login view
    - [X] Generate a session
@@ -58,8 +58,8 @@ The whole challenge specs could be listed as follows:
 
 In this section I'll list all the additional features developed in the project.
 
-- The project has been Dockerized.
-- To test CRUD functionalities, an extra script (`crud_utils.py`) has been added and it can be used to do so. It uses the `requests` module to test CRUD via REST.
+- <sup>[1](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup>The project has been Dockerized.
+- <sup>[2](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup>To test CRUD functionalities, an extra script (`crud_utils.py`) has been added and it can be used to do so. It uses the `requests` module to test CRUD via REST.
 
 
 ## Prerequisities

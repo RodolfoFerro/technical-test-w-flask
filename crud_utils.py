@@ -25,6 +25,29 @@ def test_read(ids):
     return
 
 
+def test_update(id, data):
+    """Utility function to test UPDATE method."""
+
+    url = 'http://0.0.0.0:5000/update'
+
+    response = requests.put(url + f'/{id}', json=data)
+    print(response.text)
+
+    return
+
+
+def test_delete(ids):
+    """Utility function to test DELETE method."""
+
+    url = 'http://0.0.0.0:5000/delete'
+
+    for id in ids:
+        response = requests.delete(url + f'/{id}')
+        print(response.text)
+
+    return
+
+
 if __name__ == '__main__':
     # ================== Test CREATE ==================
     data = [
@@ -56,6 +79,19 @@ if __name__ == '__main__':
     ]
     test_create(data)
 
+
     # =================== Test READ ===================
     ids = [2, 3, 4]
     test_read(ids)
+
+
+    # ================== Test UPDATE ==================
+    id, user = 2, {
+        'birth_date': '24/12/1960'
+    }
+    test_update(id, user)
+
+
+    # ================== Test UPDATE ==================
+    ids = [3, 4]
+    test_delete(ids)

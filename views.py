@@ -133,17 +133,13 @@ def read(id):
     # Fetch user from database:
     query = User.query.filter_by(id=id).first()
 
-    # Validate non-empty query:
-    if query:
-        keys = query.__table__.columns._data.keys()
-
     # Build response:
     response = {
         'response': '[INFO] User info correctly gathered from database.',
         'user': {
             key: ( getattr(query, key) if key != 'birth_date' \
                     else getattr(query, key).strftime("%d/%m/%Y") ) \
-                for key in keys
+                for key in query.__table__.columns._data.keys()
         }
     } if query else {
         'response': f'[ERROR] User with id {id} not found in database.'
@@ -156,11 +152,69 @@ def read(id):
 def update(id):
     """PUT url to update users."""
 
-    return True
+    # Fetch JSON from PUT request:
+    data = request.get_json()
+
+    # Fetch user from database:
+    query = User.query.filter_by(id=id).first()
+
+    # Validate non-empty query and update data:
+    if query:
+        for key, value in data.items():
+            if key == 'birth_date':
+                # Validate birth date:
+                try:
+                    date = value.split('/')
+                    date = [int(item) for item in date[::-1]]
+                    setattr(query, key, datetime(date[0], date[1], date[2]))
+                except Exception as e:
+                    print('[ERROR] ' + e)
+                    response = {
+                        'response':
+                        '[ERROR] Birth date must be in "DD/MM/YYYY" format.'
+                    }
+                    return jsonify(response)
+            else:
+                setattr(query, key, value)
+        db.session.commit()
+
+    # Build response:
+    response = {
+        'response': '[INFO] User info correctly updated into database.',
+        'user': {
+            key: ( getattr(query, key) if key != 'birth_date' \
+                    else getattr(query, key).strftime("%d/%m/%Y") ) \
+                for key in query.__table__.columns._data.keys()
+        }
+    } if query else {
+        'response': f'[ERROR] User with id {id} not found in database.'
+    }
 
 
-@app.route('/delete', methods=['DELETE'])
-def delete():
-    """DELETE url to add users."""
+    return jsonify(response)
 
-    return True
+
+@app.route('/delete/<int:id>', methods=['DELETE'])
+def delete(id):
+    """DELETE url to remove users."""
+
+    # Fetch user from database:
+    query = User.query.filter_by(id=id).first()
+
+    # Build response:
+    response = {
+        'response': '[INFO] User info correctly removed from database.',
+        'user': {
+            key: ( getattr(query, key) if key != 'birth_date' \
+                    else getattr(query, key).strftime("%d/%m/%Y") ) \
+                for key in query.__table__.columns._data.keys()
+        }
+    } if query else {
+        'response': f'[ERROR] User with id {id} not found in database.'
+    }
+
+    if query:
+        db.session.delete(query)
+        db.session.commit()
+
+    return jsonify(response)

@@ -11,9 +11,8 @@ class User(db.Model):
     gender = db.Column('gender', db.String(1))
     password = db.Column('password', db.String(64))
 
-    def __init__(self, id, name, first_last_name, second_last_name,
+    def __init__(self, name, first_last_name, second_last_name,
                  email, birth_date, gender, password):
-        self.id = id
         self.name = name
         self.first_last_name = first_last_name
         self.second_last_name = second_last_name
