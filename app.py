@@ -1,5 +1,3 @@
-from datetime import datetime  # datetime.now().strftime("%d/%m/%Y")
-
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 

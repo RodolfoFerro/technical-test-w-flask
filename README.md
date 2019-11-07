@@ -24,9 +24,13 @@ The whole challenge specs could be listed as follows:
    - `String Gender` (_Accepts_ `M`, `F`, `O`)
    - `String Password` (_Must be encrypted_)
 3. [ ] Create needed methods for CRUD operations in the user model, using REST.
-4. [ ] Create a login view with route `'/login'` asking for `Email` and `Password` (this field must have a mask). In case of correct login, the app must generate a session for the user.
+   - [X] CREATE
+   - [X] READ
+   - [ ] UPDATE
+   - [ ] DELETE
+4. [X] Create a login view with route `'/login'` asking for `Email` and `Password` (this field must have a mask). In case of correct login, the app must generate a session for the user.
    - [X] Login view
-   - [ ] Generate a session
+   - [X] Generate a session
 5. [ ] Create a view with route `'/users'` which should show a table with all registered users. It must contain an action button to delete the user, and a column with an icon for the gender.
    - [Male icon](https://cdn3.iconfinder.com/data/icons/fatcow/32x32_0560/male.png)
    - [Female icon](https://cdn3.iconfinder.com/data/icons/fatcow/32/female.png)
@@ -54,7 +58,8 @@ The whole challenge specs could be listed as follows:
 
 In this section I'll list all the additional features developed in the project.
 
-- The project has been Dockerized
+- The project has been Dockerized.
+- To test CRUD functionalities, an extra script (`crud_utils.py`) has been added and it can be used to do so. It uses the `requests` module to test CRUD via REST.
 
 
 ## Prerequisities

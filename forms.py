@@ -4,5 +4,5 @@ from wtforms import PasswordField
 
 
 class LoginForm(Form):
-    username = TextField('username')
+    email = TextField('email')
     password = PasswordField('password')

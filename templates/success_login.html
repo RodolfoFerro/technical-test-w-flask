@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  <header class="bg-primary text-white">
+    <div class="container text-center">
+      <h1>You have successfully logged in!</h1>
+      <p class="lead">Welcome to this awesome web app.</p>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>About your login</h2>
+          <p class="lead">You have successfully accessed with the following info:</p>
+          <ul>
+            <li><strong>User:</strong> {{ session['user'] }}</li>
+            <li><strong>Email:</strong> {{ session['email'] }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

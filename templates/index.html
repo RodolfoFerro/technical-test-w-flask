@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  <header class="bg-primary text-white">
+    <div class="container text-center">
+      <h1>Life is short!</h1>
+      <p class="lead">Welcome to this awesome web app.</p>
+    </div>
+  </header>
+
+  <div class="container text-center">
+    <div class="row mt-5">
+      <div class="col-lg-8 mx-auto">
+        <h2>Welcome visitor.</h2>
+        <p class="lead">Feel free to checkout the GitHub repository of this project.</p>
+        <blockquote class="embedly-card">
+          <h4><a href="https://github.com/RodolfoFerro/technical-test-w-flask">RodolfoFerro/technical-test-w-flask</a></h4>
+          <p>This repository contains the solution for a particular challenge using Python + Flask to create a web platform with several functionalities.</p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <script async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script>
+{% endblock %}
