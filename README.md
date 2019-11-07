@@ -63,6 +63,7 @@ In this section I'll list all the additional features developed in the project.
   ```bash
   (docker-flask)$ python crud_utils.py
   ```
+  **This will create a sample table in the database.**
 
 
 ## Prerequisities
