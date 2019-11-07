@@ -31,12 +31,12 @@ The whole challenge specs could be listed as follows:
 4. [X] Create a login view with route `'/login'` asking for `Email` and `Password` (this field must have a mask). In case of correct login, the app must generate a session for the user.
    - [X] Login view
    - [X] Generate a session
-5. [ ] Create a view with route `'/users'` which should show a table with all registered users. It must contain an action button to delete the user, and a column with an icon for the gender.
+5. [X] Create a view with route `'/users'` which should show a table with all registered users. It must contain an action button to delete the user, and a column with an icon for the gender.
    - [Male icon](https://cdn3.iconfinder.com/data/icons/fatcow/32x32_0560/male.png)
    - [Female icon](https://cdn3.iconfinder.com/data/icons/fatcow/32/female.png)
    - [Other icon](https://cdn3.iconfinder.com/data/icons/i-am-who-i-am/100/3-256.png)
 6. [ ] Create a view with route `'/users?filter={name}'` (`name` could be only text), which must show a table with registered users whose full name includes the sent characters by the `name` parameter.
-7. [ ] Create a view with route `'/user/{id}'` (`id` could be only a number), which should show the datailed user corresponding to the `id` variable, _in case it exists_. Otherwise, return a `404` screen for that route.
+7. [ ] Create a view with route `'/user/{id}'` (`id` could be only a number), which should show the detailed user corresponding to the `id` variable, _in case it exists_. Otherwise, return a `404` screen for that route.
 8. [X] Create a `Role` model with properties:
    - `Integer ID PK` (_self-increasing_)
    - `String Name (30)`
@@ -61,7 +61,7 @@ In this section I'll list all the additional features developed in the project.
 - <sup>[1](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup> The project has been Dockerized.
 - <sup>[2](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup> An extra script (`crud_utils.py`) has been added. It uses the `requests` module to test CRUD via REST. To use the script and test CRUD, while the app is up and running, simply run:
   ```bash
-  (docker-flask) $ python crud_utils.py
+  (docker-flask)$ python crud_utils.py
   ```
 
 

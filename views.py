@@ -1,4 +1,4 @@
-from datetime import datetime  # datetime.now().strftime("%d/%m/%Y")
+from datetime import datetime
 
 from flask import render_template
 from flask import request
@@ -9,6 +9,7 @@ from app import db
 from app import app
 from models import User
 from forms import LoginForm
+from utils import parse_users
 from hash import hash_password
 from hash import verify_password_hash
 
@@ -17,7 +18,7 @@ from hash import verify_password_hash
 # ======================== BASE URL =============================
 # ===============================================================
 @app.route('/', methods=['GET'])
-def base_url():
+def index():
     """Base url to test app."""
 
     # Pop previous session:
@@ -218,3 +219,25 @@ def delete(id):
         db.session.commit()
 
     return jsonify(response)
+
+
+# ===============================================================
+# ======================== USERS URL ============================
+# ===============================================================
+@app.route('/users', methods=['GET', 'POST'])
+def users():
+    """Users url to display table with registered users."""
+
+    if request.method == 'POST' and request.form['del']:
+        id = request.form['del']
+
+        # Fetch user from database:
+        query = User.query.filter_by(id=id).first()
+        db.session.delete(query)
+        db.session.commit()
+
+    # Fetch all users from database:
+    query = User.query.all()
+    users = parse_users(query)
+
+    return render_template('users.html', users=users)
