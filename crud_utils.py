@@ -75,6 +75,31 @@ if __name__ == '__main__':
             'birth_date': '09/06/1980',
             'gender': 'M',
             'password': '456'
+        },
+        {
+            'name': 'Rei',
+            'first_last_name': 'Ayanami',
+            'email': 'eva_00@nerv.jp',
+            'birth_date': '01/01/2005',
+            'gender': 'F',
+            'password': '000'
+        },
+        {
+            'name': 'Ikari',
+            'first_last_name': 'Shinji',
+            'email': 'eva_01@nerv.jp',
+            'birth_date': '02/02/2005',
+            'gender': 'O',
+            'password': '001'
+        },
+        {
+            'name': 'Asuka',
+            'first_last_name': 'Langley',
+            'second_last_name': 'Sohryu',
+            'email': 'eva_02@nerv.jp',
+            'birth_date': '03/03/2005',
+            'gender': 'F',
+            'password': '002'
         }
     ]
     test_create(data)
@@ -93,5 +118,5 @@ if __name__ == '__main__':
 
 
     # ================== Test UPDATE ==================
-    ids = [3, 4]
+    ids = [3, 8]
     test_delete(ids)

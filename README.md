@@ -58,8 +58,11 @@ The whole challenge specs could be listed as follows:
 
 In this section I'll list all the additional features developed in the project.
 
-- <sup>[1](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup>The project has been Dockerized.
-- <sup>[2](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup>To test CRUD functionalities, an extra script (`crud_utils.py`) has been added and it can be used to do so. It uses the `requests` module to test CRUD via REST.
+- <sup>[1](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup> The project has been Dockerized.
+- <sup>[2](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup> An extra script (`crud_utils.py`) has been added. It uses the `requests` module to test CRUD via REST. To use the script and test CRUD, while the app is up and running, simply run:
+  ```bash
+  (docker-flask) $ python crud_utils.py
+  ```
 
 
 ## Prerequisities
