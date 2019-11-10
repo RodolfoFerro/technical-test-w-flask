@@ -65,7 +65,7 @@ In this section I'll list all the additional features developed in the project.
   ```
   **This will create a sample table in the database.**
 - <sup>[3](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup> For each query, a variable named `username` has been added, which contains the concatenated name.
-- <sup>[4](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup> An extra script (`roles_utils.py`) has been added. This directly writes the `Administrator` and `Client` roles to the database. To use the script, while the app is up and running, simply execute:
+- <sup>[4](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup> An extra script (`roles_utils.py`) has been added. This directly writes the `Administrator` and `Client` roles to the database. To use the script, while the app is up and running, simply execute:
   ```bash
   (docker-flask)$ python roles_utils.py
   ```
