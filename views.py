@@ -108,13 +108,13 @@ def create():
 
     # Create user to append into database:
     user = User(
-                name = data['name'],
-                first_last_name = data['first_last_name'],
-                second_last_name = sln,
-                email = data['email'],
-                birth_date = datetime(date[0], date[1], date[2]),
-                gender = data['gender'],
-                password = hash_password(data['password'])
+                name=data['name'],
+                first_last_name=data['first_last_name'],
+                second_last_name=sln,
+                email=data['email'],
+                birth_date=datetime(date[0], date[1], date[2]),
+                gender=data['gender'],
+                password=hash_password(data['password'])
             )
 
     # Add generated user to database:

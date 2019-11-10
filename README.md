@@ -41,7 +41,7 @@ The whole challenge specs could be listed as follows:
    - `Integer ID PK` (_self-increasing_)
    - `String Name (30)`
    - `String Description (20)` (_optional_)
-9. [ ] Create two roles, `Administrator` and `Client`, directly in the database.
+9. [X] Create two roles, `Administrator` and `Client`, directly in the database.<sup>[4](https://github.com/RodolfoFerro/technical-test-w-flask#extra-developments)</sup>
 10. [ ] Add relation of `User` with `Role` 1-1.
 11. [ ] Create view of _creation/edition_ of a user. The user could only access this view if the user is logged in and the user session must be validated.
 
@@ -65,6 +65,11 @@ In this section I'll list all the additional features developed in the project.
   ```
   **This will create a sample table in the database.**
 - <sup>[3](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup> For each query, a variable named `username` has been added, which contains the concatenated name.
+- <sup>[4](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup> An extra script (`roles_utils.py`) has been added. This directly writes the `Administrator` and `Client` roles to the database. To use the script, while the app is up and running, simply execute:
+  ```bash
+  (docker-flask)$ python roles_utils.py
+  ```
+  **This will create two roles in the database.**
 
 
 ## Prerequisities
