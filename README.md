@@ -36,7 +36,7 @@ The whole challenge specs could be listed as follows:
    - [Female icon](https://cdn3.iconfinder.com/data/icons/fatcow/32/female.png)
    - [Other icon](https://cdn3.iconfinder.com/data/icons/i-am-who-i-am/100/3-256.png)
 6. [ ] Create a view with route `'/users?filter={name}'` (`name` could be only text), which must show a table with registered users whose full name includes the sent characters by the `name` parameter.
-7. [ ] Create a view with route `'/user/{id}'` (`id` could be only a number), which should show the detailed user corresponding to the `id` variable, _in case it exists_. Otherwise, return a `404` screen for that route.
+7. [X] Create a view with route `'/user/{id}'` (`id` could be only a number), which should show the detailed user corresponding to the `id` variable, _in case it exists_. Otherwise, return a `404` screen for that route.<sup>[3](https://github.com/RodolfoFerro/technical-test-w-flask#extra-developments)</sup>
 8. [X] Create a `Role` model with properties:
    - `Integer ID PK` (_self-increasing_)
    - `String Name (30)`
@@ -64,6 +64,7 @@ In this section I'll list all the additional features developed in the project.
   (docker-flask)$ python crud_utils.py
   ```
   **This will create a sample table in the database.**
+- <sup>[3](https://github.com/RodolfoFerro/technical-test-w-flask#challenge-description)</sup> For each query, a variable named `username` has been added, which contains the concatenated name.
 
 
 ## Prerequisities

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          {% if user %}
+          <h2>USER NOT FOUND!</h2>
+          <p class="lead">The user with <code>ID = {{ user }}</code> can not be found in the database.</p>
+          {% else %}
+          <h2>ERROR 404</h2>
+          <p class="lead">The requested URL was not found.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+      <br><br><br>
+      <div class="row mt-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2>User with <code>ID = {{ user['id'] }}</code> found!</h2>
+          <p class="lead">User's info:</p>
+          <div class="container" style="padding:0px 100px;">
+            <ul class="text-left">
+              <li><strong>ID:</strong> {{ user['id']  }}</li>
+              <li><strong>Username:</strong> {{ user['username']  }}</li>
+              <li><strong>Email:</strong> {{ user['email']  }}</li>
+              <li><strong>Date of birth:</strong> {{ user['birth_date']  }}</li>
+              <li><strong>Gender:</strong> {{ user['gender']  }}</li>
+            </ul>
+          </div>
+          <br><br>
+          <p class="lead">You can also check-out the raw info from the database:</p>
+          <code>{{ user }}</code>
+          <br><br>
+        </div>
+      </div>
+    </div>
+{% endblock %}

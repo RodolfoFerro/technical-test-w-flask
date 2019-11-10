@@ -4,6 +4,8 @@ from flask import render_template
 from flask import request
 from flask import jsonify
 from flask import session
+from flask import url_for
+from flask import redirect
 
 from app import db
 from app import app
@@ -241,3 +243,39 @@ def users():
     users = parse_users(query)
 
     return render_template('users.html', users=users)
+
+
+@app.route('/user/<int:id>', methods=['GET'])
+def user_id(id):
+    """User url to display detailed info from user."""
+
+    # Fetch user from database:
+    query = User.query.filter_by(id=id).first()
+
+    if query:
+        user = {
+            key: ( getattr(query, key) if key != 'birth_date' \
+                    else getattr(query, key).strftime("%d/%m/%Y") ) \
+                for key in query.__table__.columns._data.keys()
+        }
+
+        if not user['second_last_name']:
+            user['username'] = user['name'] + \
+                                user['first_last_name']
+        else:
+            user['username'] = user['name'] + \
+                                user['first_last_name'] + \
+                                user['second_last_name']
+        return render_template("user.html", user=user)
+    else:
+        return redirect(url_for('error_404', user=id))
+
+
+# ===============================================================
+# ====================== ERROR HANDLER ==========================
+# ===============================================================
+@app.route('/not-found')
+@app.errorhandler(404)
+def error_404(error=None):
+    user = request.args.get('user') or None
+    return render_template('404.html', user=user)
