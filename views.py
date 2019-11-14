@@ -6,6 +6,7 @@ from flask import jsonify
 from flask import session
 from flask import url_for
 from flask import redirect
+from sqlalchemy import or_
 
 from app import db
 from app import app
@@ -225,6 +226,7 @@ def delete(id):
 
 # ===============================================================
 # ======================== USERS URL ============================
+# ================== USERS + ?filter={name} =====================
 # ===============================================================
 @app.route('/users', methods=['GET', 'POST'])
 def users():
@@ -237,6 +239,19 @@ def users():
         query = User.query.filter_by(id=id).first()
         db.session.delete(query)
         db.session.commit()
+
+    if request.method == 'GET' and request.args:
+        # Filter name by GET method:
+        f = request.args['filter']
+        filter = or_(
+                    User.name.contains(f),
+                    User.first_last_name.contains(f),
+                    User.second_last_name.contains(f)
+                )
+        query = User.query.filter(filter).all()
+        users = parse_users(query)
+
+        return render_template('users.html', users=users)
 
     # Fetch all users from database:
     query = User.query.all()

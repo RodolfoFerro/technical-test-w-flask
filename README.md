@@ -35,7 +35,7 @@ The whole challenge specs could be listed as follows:
    - [Male icon](https://cdn3.iconfinder.com/data/icons/fatcow/32x32_0560/male.png)
    - [Female icon](https://cdn3.iconfinder.com/data/icons/fatcow/32/female.png)
    - [Other icon](https://cdn3.iconfinder.com/data/icons/i-am-who-i-am/100/3-256.png)
-6. [ ] Create a view with route `'/users?filter={name}'` (`name` could be only text), which must show a table with registered users whose full name includes the sent characters by the `name` parameter.
+6. [X] Create a view with route `'/users?filter={name}'` (`name` could be only text), which must show a table with registered users whose full name includes the sent characters by the `name` parameter.
 7. [X] Create a view with route `'/user/{id}'` (`id` could be only a number), which should show the detailed user corresponding to the `id` variable, _in case it exists_. Otherwise, return a `404` screen for that route.<sup>[3](https://github.com/RodolfoFerro/technical-test-w-flask#extra-developments)</sup>
 8. [X] Create a `Role` model with properties:
    - `Integer ID PK` (_self-increasing_)
