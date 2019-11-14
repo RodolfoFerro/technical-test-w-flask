@@ -11,6 +11,10 @@ class User(db.Model):
     gender = db.Column('gender', db.String(1))
     password = db.Column('password', db.String(64))
 
+    # One-to-one relationship:
+    role = db.relationship('Role', backref='user', uselist=False)
+
+
     def __init__(self, name, first_last_name, second_last_name,
                  email, birth_date, gender, password):
         self.name = name
@@ -26,6 +30,10 @@ class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30))
     description = db.Column(db.String(20), nullable=True)
+
+    # One-to-one relationship:
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
 
     def __init__(self, name, description):
         self.name = name
