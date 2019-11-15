@@ -2,7 +2,7 @@
 {% block content %}
   <div class="container">
     <div class="container-fluid">
-      <br><br><br><br>
+      <br><br>
       <!-- DataTables -->
       <div class="card mb-5">
         <div class="card-header">Registered users</div>
@@ -16,6 +16,9 @@
                   <th>Email</th>
                   <th>Date of birth</th>
                   <th>Gender</th>
+                  {% if editable %}
+                  <th>Edit</th>
+                  {% endif %}
                   <th>Delete</th>
                 </tr>
               </thead>
@@ -26,6 +29,9 @@
                   <th>Email</th>
                   <th>Date of birth</th>
                   <th>Gender</th>
+                  {% if editable %}
+                  <th>Edit</th>
+                  {% endif %}
                   <th>Delete</th>
                 </tr>
               </tfoot>
@@ -44,6 +50,11 @@
                     <td><img src="static/img/female.png" width="20"></td>
                     {% else %}
                     <td><img src="static/img/other.png" width="25"></td>
+                    {% endif %}
+                    {% if editable %}
+                    <td>
+                      <a class="btn btn-info" href="/edit/{{ user['id'] }}">✏️</a>
+                    </td>
                     {% endif %}
                     <td>
                       <button type="submit" name="del" class="btn btn-danger" value="{{ user['id'] }}">X</button>

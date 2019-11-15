@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+
+  <!-- Login alert -->
+  {% if login_flag %}
+  <div class="alert alert-success float-right" role="alert">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>Welcome back!</strong> You have successfully logged in.
+  </div>
+  {% endif %}
+
   <header class="bg-primary text-white">
     <div class="container text-center">
       <h1>You have successfully logged in!</h1>
@@ -17,6 +26,8 @@
             <li><strong>User:</strong> {{ session['user'] }}</li>
             <li><strong>Email:</strong> {{ session['email'] }}</li>
           </ul>
+
+          <h3>You can now administrate <a href="/users">users</a>.</h3>
         </div>
       </div>
     </div>

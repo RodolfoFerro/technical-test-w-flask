@@ -1,11 +1,11 @@
 from datetime import datetime
 
 from flask import render_template
+from flask import redirect
 from flask import request
 from flask import jsonify
 from flask import session
 from flask import url_for
-from flask import redirect
 from sqlalchemy import or_
 
 from app import db
@@ -43,6 +43,7 @@ def login():
     session.pop('email', None)
 
     # Login flag and form:
+    login_flag = False
     login_error = False
     form = LoginForm(request.form)
 
@@ -65,11 +66,16 @@ def login():
 
             # Validate password and create session:
             if verify_password_hash(password, hash_pass):
+                login_flag = True
                 session['email'] = email
                 session['user'] = f'{name} {fst_ln} {snd_ln}' if snd_ln \
                                     else f'{name} {fst_ln}'
 
-                return render_template('success_login.html', session=session)
+                return render_template(
+                            'success_login.html',
+                            session=session,
+                            login_flag=login_flag
+                        )
             else:
                 login_error = True
 
@@ -227,18 +233,22 @@ def delete(id):
 # ===============================================================
 # ======================== USERS URL ============================
 # ================== USERS + ?filter={name} =====================
+# ====================== EDIT USER URL ==========================
 # ===============================================================
 @app.route('/users', methods=['GET', 'POST'])
 def users():
     """Users url to display table with registered users."""
 
-    if request.method == 'POST' and request.form['del']:
-        id = request.form['del']
+    editable = False
 
-        # Fetch user from database:
-        query = User.query.filter_by(id=id).first()
-        db.session.delete(query)
-        db.session.commit()
+    if request.method == 'POST':
+        if request.form['del']:
+            id = request.form['del']
+
+            # Fetch user from database:
+            query = User.query.filter_by(id=id).first()
+            db.session.delete(query)
+            db.session.commit()
 
     if request.method == 'GET' and request.args:
         # Filter name by GET method:
@@ -253,11 +263,15 @@ def users():
 
         return render_template('users.html', users=users)
 
+    # Validate if the user has successfully logged in:
+    if 'user' in session:
+        editable = True
+
     # Fetch all users from database:
     query = User.query.all()
     users = parse_users(query)
 
-    return render_template('users.html', users=users)
+    return render_template('users.html', users=users, editable=editable)
 
 
 @app.route('/user/<int:id>', methods=['GET'])
@@ -284,6 +298,37 @@ def user_id(id):
         return render_template("user.html", user=user)
     else:
         return redirect(url_for('error_404', user=id))
+
+
+@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit_user(id):
+    """User url for edition."""
+
+    # Validate session:
+    if not 'user' in session:
+        return redirect('/error_404')
+    else:
+        # Fetch user from database:
+        query = User.query.filter_by(id=id).first()
+
+        if query:
+            user = {
+                key: ( getattr(query, key) if key != 'birth_date' \
+                        else getattr(query, key).strftime("%d/%m/%Y") ) \
+                    for key in query.__table__.columns._data.keys()
+            }
+
+            if not user['second_last_name']:
+                user['username'] = user['name'] + ' ' + \
+                                    user['first_last_name']
+            else:
+                user['username'] = user['name'] + ' ' + \
+                                    user['first_last_name'] + ' ' + \
+                                    user['second_last_name']
+            return render_template("user-edit.html", user=user)
+        else:
+            return redirect(url_for('error_404', user=id))
+
 
 
 # ===============================================================
