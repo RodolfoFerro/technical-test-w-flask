@@ -12,6 +12,7 @@ from app import db
 from app import app
 from models import User
 from forms import LoginForm
+from forms import UserEditForm
 from utils import parse_users
 from hash import hash_password
 from hash import verify_password_hash
@@ -312,6 +313,30 @@ def edit_user(id):
         query = User.query.filter_by(id=id).first()
 
         if query:
+            form = UserEditForm(request.form)
+
+            if len(form.errors):
+                print(form.errors)
+            if request.method == 'POST':
+                # Fetch data from user edit form:
+                user_data = {
+                    'name': form.name.data,
+                    'first_last_name': form.first_last_name.data,
+                    'second_last_name': form.second_last_name.data,
+                    'email': form.email.data,
+                    'password': form.password.data,
+                    'birth_date': form.birth_date.data,
+                    'gender': form.gender.data
+                }
+
+                for key, value in user_data.items():
+                    setattr(query, key, value)
+
+                # Commit update to database:
+                db.session.commit()
+
+                return redirect(url_for('users'))
+
             user = {
                 key: ( getattr(query, key) if key != 'birth_date' \
                         else getattr(query, key).strftime("%d/%m/%Y") ) \
@@ -325,7 +350,7 @@ def edit_user(id):
                 user['username'] = user['name'] + ' ' + \
                                     user['first_last_name'] + ' ' + \
                                     user['second_last_name']
-            return render_template("user-edit.html", user=user)
+            return render_template("user-edit.html", user=user, form=form)
         else:
             return redirect(url_for('error_404', user=id))
 
