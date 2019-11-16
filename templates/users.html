@@ -66,6 +66,9 @@
               </tbody>
             </table>
           </div>
+          {% if editable %}
+          <a class="btn btn-success float-right" href="/new">Create new user</a>
+          {% endif %}
         </div>
         <div class="card-footer small text-muted">Last update a second ago.</div>
       </div>

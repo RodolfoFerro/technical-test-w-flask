@@ -11,8 +11,8 @@ from sqlalchemy import or_
 from app import db
 from app import app
 from models import User
+from forms import UserForm
 from forms import LoginForm
-from forms import UserEditForm
 from utils import parse_users
 from hash import hash_password
 from hash import verify_password_hash
@@ -313,7 +313,7 @@ def edit_user(id):
         query = User.query.filter_by(id=id).first()
 
         if query:
-            form = UserEditForm(request.form)
+            form = UserForm(request.form)
 
             if len(form.errors):
                 print(form.errors)
@@ -354,6 +354,57 @@ def edit_user(id):
         else:
             return redirect(url_for('error_404', user=id))
 
+
+@app.route('/new', methods=['GET', 'POST'])
+def new_user():
+    """User url for creation."""
+
+    form = UserForm(request.form)
+
+    # Validate session:
+    if not 'user' in session:
+        return redirect('/error_404')
+    else:
+        if request.method == 'POST':
+            if len(form.errors):
+                print(form.errors)
+            if request.method == 'POST':
+                # Validate second last name:
+                if len(form.second_last_name.data):
+                    sln = form.second_last_name.data
+                else:
+                    sln = None
+
+                # Fetch data from user edit form:
+                data = {
+                    'name': form.name.data,
+                    'first_last_name': form.first_last_name.data,
+                    'second_last_name': sln,
+                    'email': form.email.data,
+                    'password': form.password.data,
+                    'birth_date': form.birth_date.data,
+                    'gender': form.gender.data
+                }
+
+
+                # Create user to append into database:
+                user = User(
+                            name=data['name'],
+                            first_last_name=data['first_last_name'],
+                            second_last_name=sln,
+                            email=data['email'],
+                            birth_date=data['birth_date'],
+                            gender=data['gender'],
+                            password=hash_password(data['password'])
+                        )
+
+                # Add generated user to database:
+                db.session.add(user)
+                db.session.commit()
+
+                return redirect(url_for('users'))
+
+        return render_template("user-edit.html", user=None, form=form)
 
 
 # ===============================================================

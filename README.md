@@ -43,7 +43,7 @@ The whole challenge specs could be listed as follows:
    - `String Description (20)` (_optional_)
 9. [X] Create two roles, `Administrator` and `Client`, directly in the database.<sup>[4](https://github.com/RodolfoFerro/technical-test-w-flask#extra-developments)</sup>
 10. [X] Add relation of `User` with `Role` 1-1.
-11. [ ] Create view of _creation/edition_ of a user. The user could only access this view if the user is logged in and the user session must be validated.
+11. [X] Create view of _creation/edition_ of a user. The user could only access this view if the user is logged in and the user session must be validated.
 
 #### Extra considerations
 

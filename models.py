@@ -12,7 +12,7 @@ class User(db.Model):
     password = db.Column('password', db.String(64))
 
     # One-to-one relationship:
-    role = db.relationship('Role', backref='user', uselist=False)
+    # role = db.relationship('Role', backref='user', uselist=False)
 
 
     def __init__(self, name, first_last_name, second_last_name,
@@ -32,7 +32,7 @@ class Role(db.Model):
     description = db.Column(db.String(20), nullable=True)
 
     # One-to-one relationship:
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    # user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
 
     def __init__(self, name, description):

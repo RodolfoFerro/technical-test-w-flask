@@ -10,7 +10,7 @@ class LoginForm(Form):
     password = PasswordField('password')
 
 
-class UserEditForm(Form):
+class UserForm(Form):
     name = TextField('name')
     first_last_name = TextField('first_last_name')
     second_last_name = TextField('second_last_name')
