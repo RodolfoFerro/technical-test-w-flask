@@ -72,6 +72,13 @@ In this section I'll list all the additional features developed in the project.
   **This will create two roles in the database.**
 
 
+#### Extra comments
+
+- Since the 1-1 relationship has not been specified in more detail, the code for this section has been added, but it has been commented to avoid any possible malfunction inside the code. You can find this in the [`models.py`](https://github.com/RodolfoFerro/technical-test-w-flask/blob/master/models.py) script (lines 15 and 24).
+- **NOT A SINGLE LINTER HAS BEEN USED.** All the code structure is mainly based on my own practices trying to follow Python's philosophy.
+- **THE WHOLE CODE HAS BEEN DEVELOPED USING ONLY ATOM**, without any packages nor extra tools that may help during the development.
+
+
 ## Prerequisities
 
 Before you begin, ensure you have met the following requirements:

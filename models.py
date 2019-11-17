@@ -2,6 +2,8 @@ from app import db
 
 
 class User(db.Model):
+    """User model for database."""
+
     id = db.Column('id', db.Integer, primary_key=True)
     name = db.Column('name', db.String(30))
     first_last_name = db.Column('first_last_name', db.String(30))
@@ -15,26 +17,12 @@ class User(db.Model):
     # role = db.relationship('Role', backref='user', uselist=False)
 
 
-    def __init__(self, name, first_last_name, second_last_name,
-                 email, birth_date, gender, password):
-        self.name = name
-        self.first_last_name = first_last_name
-        self.second_last_name = second_last_name
-        self.email = email
-        self.birth_date = birth_date
-        self.gender = gender
-        self.password = password
-
-
 class Role(db.Model):
+    """Role model for database."""
+
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30))
     description = db.Column(db.String(20), nullable=True)
 
     # One-to-one relationship:
     # user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-
-    def __init__(self, name, description):
-        self.name = name
-        self.description = description

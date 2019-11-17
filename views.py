@@ -23,7 +23,7 @@ from hash import verify_password_hash
 # ===============================================================
 @app.route('/', methods=['GET'])
 def index():
-    """Base url to test app."""
+    """Base URL to test app."""
 
     # Pop previous session:
     session.pop('user', None)
@@ -37,7 +37,7 @@ def index():
 # ===============================================================
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    """Login url."""
+    """Login URL."""
 
     # Pop previous session:
     session.pop('user', None)
@@ -88,7 +88,7 @@ def login():
 # ===============================================================
 @app.route('/create', methods=['POST'])
 def create():
-    """CREATE url to add users."""
+    """CREATE URL to add users."""
 
     # Fetch JSON from POST request:
     data = request.get_json()
@@ -139,7 +139,7 @@ def create():
 
 @app.route('/read/<int:id>', methods=['GET'])
 def read(id):
-    """READ url to fetch users."""
+    """READ URL to fetch users."""
 
     # Fetch user from database:
     query = User.query.filter_by(id=id).first()
@@ -161,7 +161,7 @@ def read(id):
 
 @app.route('/update/<int:id>', methods=['PUT'])
 def update(id):
-    """PUT url to update users."""
+    """PUT URL to update users."""
 
     # Fetch JSON from PUT request:
     data = request.get_json()
@@ -207,7 +207,7 @@ def update(id):
 
 @app.route('/delete/<int:id>', methods=['DELETE'])
 def delete(id):
-    """DELETE url to remove users."""
+    """DELETE URL to remove users."""
 
     # Fetch user from database:
     query = User.query.filter_by(id=id).first()
@@ -238,7 +238,7 @@ def delete(id):
 # ===============================================================
 @app.route('/users', methods=['GET', 'POST'])
 def users():
-    """Users url to display table with registered users."""
+    """Users URL to display table with registered users."""
 
     editable = False
 
@@ -277,7 +277,7 @@ def users():
 
 @app.route('/user/<int:id>', methods=['GET'])
 def user_id(id):
-    """User url to display detailed info from user."""
+    """User URL to display detailed info from user."""
 
     # Fetch user from database:
     query = User.query.filter_by(id=id).first()
@@ -303,7 +303,7 @@ def user_id(id):
 
 @app.route('/edit/<int:id>', methods=['GET', 'POST'])
 def edit_user(id):
-    """User url for edition."""
+    """User URL for edition."""
 
     # Validate session:
     if not 'user' in session:
@@ -357,7 +357,7 @@ def edit_user(id):
 
 @app.route('/new', methods=['GET', 'POST'])
 def new_user():
-    """User url for creation."""
+    """User URL for creation."""
 
     form = UserForm(request.form)
 
@@ -413,5 +413,7 @@ def new_user():
 @app.route('/not-found')
 @app.errorhandler(404)
 def error_404(error=None):
+    """URL for error handling."""
+
     user = request.args.get('user') or None
     return render_template('404.html', user=user)

@@ -1,4 +1,6 @@
 def parse_users(query):
+    """Utility function to parse a query of users."""
+
     users = [{
         key: ( getattr(item, key) if key != 'birth_date' \
                 else getattr(item, key).strftime("%d/%m/%Y") ) \
